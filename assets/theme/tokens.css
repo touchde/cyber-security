@@ -1,0 +1,69 @@
+/* Generated from tokens.json by build-css.py. Do not edit by hand. */
+
+@font-face { font-family: 'Inter'; src: url('../fonts/inter/web/InterVariable.woff2') format('woff2'); font-weight: 100 900; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Inter'; src: url('../fonts/inter/web/InterVariable-Italic.woff2') format('woff2'); font-weight: 100 900; font-style: italic; font-display: swap; }
+@font-face { font-family: 'JetBrains Mono'; src: url('../fonts/jetbrains-mono/web/JetBrainsMono-Regular.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: 'JetBrains Mono'; src: url('../fonts/jetbrains-mono/web/JetBrainsMono-Medium.woff2') format('woff2'); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: 'JetBrains Mono'; src: url('../fonts/jetbrains-mono/web/JetBrainsMono-Bold.woff2') format('woff2'); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: 'JetBrains Mono'; src: url('../fonts/jetbrains-mono/web/JetBrainsMono-Italic.woff2') format('woff2'); font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: 'Google Sans Khmer'; src: url('../fonts/google-sans/GoogleSans[GRAD,opsz,wght].ttf') format('truetype'); font-weight: 300 700; font-style: normal; font-display: swap; unicode-range: U+1780-17FF, U+19E0-19FF, U+200B-200D; }
+
+:root {
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  --font-khmer: 'Google Sans Khmer', 'Inter', sans-serif;
+  --light-background: #FFFFFF;
+  --light-surface: #F4F6FA;
+  --light-border: #D9DEE8;
+  --light-text: #14213D;
+  --light-text-muted: #55607A;
+  --light-primary: #2353C9;
+  --dark-background: #0F1B33;
+  --dark-surface: #172543;
+  --dark-border: #26375C;
+  --dark-text: #E8EEF8;
+  --dark-text-muted: #A3B0C8;
+  --dark-primary: #7FA6FF;
+  --code-background: #0F1B33;
+  --code-border: #26375C;
+  --code-highlight-line: #1C2E52;
+  --code-window-dots-1: #FF5F57;
+  --code-window-dots-2: #FEBC2E;
+  --code-window-dots-3: #28C840;
+  --code-text: #E8EEF8;
+  --code-comment: #8796B3;
+  --code-keyword: #D59BFF;
+  --code-string: #A8E07A;
+  --code-number: #FFA27A;
+  --code-type: #7FC8FF;
+  --code-function: #FFD479;
+  --code-punctuation: #9EDCF0;
+  --code-output: #B8F0D2;
+  --callout-note-accent: #2353C9;
+  --callout-note-tint: #F4F7FE;
+  --callout-note-text: #163A8F;
+  --callout-tip-accent: #178A5B;
+  --callout-tip-tint: #F3FAF6;
+  --callout-tip-text: #0E5E3D;
+  --callout-warning-accent: #C26A00;
+  --callout-warning-tint: #FFF9EF;
+  --callout-warning-text: #7A4000;
+  --callout-practice-accent: #6B4BD8;
+  --callout-practice-tint: #F7F5FE;
+  --callout-practice-text: #4A2FA8;
+  --diagram-node-fill: #FFFFFF;
+  --diagram-node-stroke: #2353C9;
+  --diagram-node-alt-fill: #EAF0FD;
+  --diagram-group-fill: #F4F6FA;
+  --diagram-group-stroke: #D9DEE8;
+  --diagram-arrow: #55607A;
+  --diagram-highlight: #C26A00;
+  --diagram-highlight-fill: #FFF3E0;
+  --topic-accent-dart: #0175C2;
+  --topic-accent-flutter: #027DFD;
+  --topic-accent-swift: #F05138;
+  --topic-accent-kotlin: #7F52FF;
+  --topic-accent-android: #3DDC84;
+  --topic-accent-javascript: #F7DF1E;
+  --topic-accent-react-native: #61DAFB;
+}

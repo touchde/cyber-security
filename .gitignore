@@ -1,0 +1,17 @@
+.DS_Store
+# Built PDFs are published; the HTML they are printed from is not.
+output/**/*.html
+.tmp/
+__pycache__/
+*.pyc
+node_modules/
+.venv/
+# Lab files that must never be committed
+*.pcap
+*.pcapng
+*.vmdk
+*.ova
+*.iso
+*.mem
+*.raw
+**/samples/live/

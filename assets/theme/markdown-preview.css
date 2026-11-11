@@ -1,0 +1,12 @@
+/* Markdown preview style: Google Sans for Khmer, Inter for Latin, JetBrains Mono for code.
+   unicode-range applies Google Sans to Khmer characters only, so one stack works for en/ and km/. */
+@font-face { font-family: 'Google Sans Khmer'; src: url('../fonts/google-sans/GoogleSans[GRAD,opsz,wght].ttf') format('truetype'); font-weight: 300 700; unicode-range: U+1780-17FF, U+19E0-19FF, U+200B-200D; }
+@font-face { font-family: 'Inter'; src: url('../fonts/inter/web/InterVariable.woff2') format('woff2'); font-weight: 100 900; }
+@font-face { font-family: 'JetBrains Mono'; src: url('../fonts/jetbrains-mono/web/JetBrainsMono-Regular.woff2') format('woff2'); font-weight: 400; }
+
+body {
+  font-family: 'Google Sans Khmer', 'Inter', system-ui, sans-serif;
+  line-height: 1.8; /* Khmer has stacked characters and needs extra height */
+}
+h1, h2, h3, h4 { font-family: 'Google Sans Khmer', 'Inter', system-ui, sans-serif; line-height: 1.5; }
+code, pre, pre code { font-family: 'JetBrains Mono', 'Google Sans Khmer', ui-monospace, monospace; line-height: 1.5; font-variant-ligatures: none; font-feature-settings: 'liga' 0, 'calt' 0; }
