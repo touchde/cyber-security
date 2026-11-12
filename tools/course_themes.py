@@ -206,6 +206,42 @@ def blueprint_motif(w, h, mm):
     return out
 
 
+def circuit_motif(w, h, mm):
+    """Circuit-board traces: teal lines with square pads and vias, fanning out across the lower page.
+    How Computers Work opens up the machine and looks inside."""
+    out = ""
+    teal, dim = "#2DD4BF", "#1C4C47"
+    # a few horizontal/vertical traces with right-angle turns and pads at the ends
+    # Kept in the lower-right quadrant (x >= 96), clear of the bottom-left author line.
+    traces = [
+        [(104, 300), (104, 232), (150, 232), (150, 272)],
+        [(150, 272), (196, 272)],
+        [(150, 232), (196, 232), (196, 300)],
+        [(124, 300), (124, 252), (150, 252)],
+        [(104, 286), (176, 286)],
+    ]
+    for pts in traces:
+        for i in range(len(pts) - 1):
+            x1, y1 = pts[i]; x2, y2 = pts[i + 1]
+            left, top = min(x1, x2), min(y1, y2)
+            wpx = max(abs(x2 - x1), 0.8) * mm
+            hpx = max(abs(y2 - y1), 0.8) * mm
+            out += (f'<div style="position:absolute;left:{left * mm}px;top:{top * mm}px;width:{wpx}px;height:{hpx}px;'
+                    f'background:{teal};opacity:.55"></div>')
+    # square pads at trace ends and junctions
+    pads = [(104, 300), (150, 272), (196, 272), (196, 300), (150, 252), (124, 300), (150, 232)]
+    for x, y in pads:
+        s = 5 * mm
+        out += (f'<div style="position:absolute;left:{x * mm - s / 2}px;top:{y * mm - s / 2}px;width:{s}px;height:{s}px;'
+                f'background:{teal}"></div>')
+    # faint grid of dim vias behind it, right side only
+    for gx in range(0, 6):
+        for gy in range(0, 5):
+            out += (f'<div style="position:absolute;left:{(100 + gx * 20) * mm}px;top:{(236 + gy * 15) * mm}px;'
+                    f'width:{2 * mm}px;height:{2 * mm}px;background:{dim};opacity:.5"></div>')
+    return out
+
+
 def security_motif(w, h, mm):
     """Nested squares, like the doors of a vault, in dark red tones, with one bright crimson ring. Near-black page."""
     out = ""
@@ -1173,6 +1209,42 @@ pre.output { border-left-color: #F2A541; }
                        "Build the base for every later security course"],
                       ["យល់ដឹងពី cybersecurity ចាប់ពីមូលដ្ឋាន", "រៀនពីរបៀបនៃការវាយប្រហារ និងការការពារ",
                        "បង្កើតមូលដ្ឋានសម្រាប់គ្រប់ course សន្តិសុខបន្ទាប់"],
+                      badge_en="A Practical Guide", second=""),
+    },
+    "computer-fundamentals": {
+        "folder": "02-computer-fundamentals", "code": "c", "name": "How Computers Work", "slug": "how-computers-work",
+        "logo_dark": "assets/icons/courses/computer-fundamentals.svg", "logo_light": "assets/icons/courses/computer-fundamentals.svg",
+        "icon": "assets/icons/courses/computer-fundamentals.svg",
+        "credit": "Course mark icon from Material Symbols by Google, Apache License 2.0.",
+        "cover": {"style": "motif", "bg": "#0C1716", "ink": "#FFFFFF", "second": "#5EEAD4", "accent": "#2DD4BF",
+                  "art": "assets/covers/patterns/computer-fundamentals-cover-background.png",
+                  "motif": circuit_motif, "size": "64pt", "author_side": "left"},
+        # Its own look: charcoal and teal "circuit". See 02-computer-fundamentals/planning/slide-design.md.
+        "theme": theme(
+            primary="#0C7A6E", surface="#F4F8F7", border="#D4E4E1", text="#122420", muted="#4E635E",
+            dark=("#0C1716", "#13211F", "#224A44", "#EFF6F4", "#A6C3BD", "#2DD4BF"),
+            code={"background": "#0D1A18", "border": "#224A44", "highlight-line": "#14251F", "text": "#E8F3F0",
+                  "comment": "#6F8C86", "keyword": "#5EEAD4", "string": "#F2C98A", "number": "#9FE0C8",
+                  "type": "#8BD5FF", "function": "#F6A96B", "punctuation": "#C7D8D4", "output": "#BFE8DC"},
+            note_tint="#EBF5F3", note_text="#0C5248"),
+        "fonts": ("Space Grotesk", "Space Mono"),
+        "font_faces": faces(("Space Grotesk", "space-grotesk"), ("Space Mono", "space-mono")),
+        "slide_css": """
+section.dark h1::after { content: ""; display: block; width: 90px; height: 6px; background: #2DD4BF; margin-top: 22px; }
+section.recap { background: #E8F6F3; border-top: 10px solid #2DD4BF; }
+pre.output { border-left-color: #2DD4BF; }
+.footer span:first-child::before { content: "01"; font-family: 'Space Mono', monospace; font-weight: 700; color: #0C7A6E; margin-right: 10px; }
+section.dark .footer span:first-child::before { color: #2DD4BF; }
+""",
+        "book_css": """
+pre.output { border-left-color: #2DD4BF; }
+@page { @top-left { border-bottom-color: #0C7A6E; } @top-right { border-bottom-color: #0C7A6E; } }
+""",
+        "text": texts("How Computers Work", "របៀបដែលកុំព្យូទ័រដំណើរការ",
+                      ["See inside the machine, from bits to the boot", "Understand memory, files, programs, and the OS",
+                       "Build the base for reversing, forensics, and exploitation"],
+                      ["មើលខាងក្នុងម៉ាស៊ីន ចាប់ពី bit ដល់ការ boot", "យល់ពី memory, file, program និង OS",
+                       "បង្កើតមូលដ្ឋានសម្រាប់ reversing, forensics និង exploitation"],
                       badge_en="A Practical Guide", second=""),
     },
     "java": {

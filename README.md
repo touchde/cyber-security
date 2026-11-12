@@ -41,7 +41,7 @@ The developer side of mobile security is in the mobile-development repository (c
 | Topic | Path | Lessons (draft) | Outline | Written |
 |---|---|---:|:---:|:---:|
 | [01. Security Fundamentals](01-security-fundamentals/) | Foundations | 12 | ✅ | ✅ All 12, en |
-| [02. How Computers Work](02-computer-fundamentals/) | Foundations | 12 | ⬜ | ⬜ |
+| [02. How Computers Work](02-computer-fundamentals/) | Foundations | 12 | ✅ | ✅ All 12, en |
 | [03. Linux for Security](03-linux/) | Foundations | 13 | ⬜ | ⬜ |
 | [04. Networking for Security](04-networking/) | Foundations | 15 | ⬜ | ⬜ |
 | [05. Windows and Active Directory Fundamentals](05-windows-active-directory/) | Foundations | 12 | ⬜ | ⬜ |
@@ -88,4 +88,5 @@ The developer side of mobile security is in the mobile-development repository (c
 ## Current Work
 
 - **Done on 2026-11-11:** the full course list and a draft lesson list for every course; the shared `STYLE-GUIDE.md` (adapted, no-storyline) and a seed `GLOSSARY.md`; the `tools/` and `assets/` build system brought over from mobile-development; **course 01 (Security Fundamentals) fully planned, all 12 lessons written in English, and built to PDF** (lesson books + slides + a 104-page full book, in `output/01-security-fundamentals/`)
-- **Next:** your review of course 01's 12 English lessons; then optional diagrams and the Khmer versions; then course 02
+- **Done on 2026-11-12:** **course 02 (How Computers Work) fully planned, all 12 lessons written in English, and built to PDF** (lesson books + slides + a 102-page full book, in `output/02-computer-fundamentals/`), with its own "circuit" theme and runnable C/shell examples
+- **Next:** your review of courses 01–02's English lessons; then the Khmer versions; then course 03 (Networking)
