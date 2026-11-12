@@ -24,6 +24,7 @@ COURSES = {  # course: (Material Symbols icon, tile color, small corner square c
     "web-development": ("language", "#B0204F", "#7DE2D1"),
     "security-fundamentals": ("shield", "#0E2A5A", "#F2A541"),
     "computer-fundamentals": ("deployed_code", "#13211F", "#2DD4BF"),
+    "linux": ("terminal", "#0C1A12", "#4ADE80"),
 }
 out = HERE / "icons/courses"
 out.mkdir(parents=True, exist_ok=True)

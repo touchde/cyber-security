@@ -206,6 +206,25 @@ def blueprint_motif(w, h, mm):
     return out
 
 
+def terminal_motif(w, h, mm):
+    """A terminal: a green prompt and blinking cursor, with dimmed lines of commands below, like a shell session.
+    Linux for Security lives on the command line."""
+    mono = (ROOT / "assets/fonts/fira-code/FiraCode-Regular.ttf")
+    face = f"<style>@font-face{{font-family:FC;src:url({mono.as_uri()})}}</style>" if mono.exists() else ""
+    out = face
+    green, dim = "#4ADE80", "#2F6B45"
+    # a big prompt and cursor block, lower-left area
+    out += (f'<div style="position:absolute;left:{20 * mm}px;top:{232 * mm}px;font:700 {11 * mm}px FC,monospace;color:{green}">$</div>')
+    out += (f'<div style="position:absolute;left:{34 * mm}px;top:{231 * mm}px;width:{7 * mm}px;height:{12 * mm}px;background:{green};opacity:.9"></div>')
+    # dimmed lines of "commands" below, varying lengths, like scrollback
+    lines = [120, 80, 150, 60, 100, 170, 90]
+    for i, length in enumerate(lines):
+        y = (250 + i * 7) * mm
+        out += (f'<div style="position:absolute;left:{20 * mm}px;top:{y}px;width:{length * mm}px;height:{2.4 * mm}px;'
+                f'background:{dim};opacity:{0.5 - i * 0.04}"></div>')
+    return out
+
+
 def circuit_motif(w, h, mm):
     """Circuit-board traces: teal lines with square pads and vias, fanning out across the lower page.
     How Computers Work opens up the machine and looks inside."""
@@ -1247,6 +1266,43 @@ pre.output { border-left-color: #2DD4BF; }
                        "បង្កើតមូលដ្ឋានសម្រាប់ reversing, forensics និង exploitation"],
                       badge_en="A Practical Guide", second=""),
     },
+    "linux": {
+        "folder": "03-linux", "code": "bash", "name": "Linux for Security", "slug": "linux-for-security",
+        "logo_dark": "assets/logos/linux/linux.svg", "logo_light": "assets/logos/linux/linux.svg",
+        "icon": "assets/logos/linux/linux.svg",
+        "credit": ("Course mark icon from Material Symbols by Google, Apache License 2.0. Linux is a registered trademark of Linus Torvalds. "
+                   "Ubuntu is a trademark of Canonical Ltd. The Tux logo is by Larry Ewing and The GIMP. Used here only to refer to the software."),
+        "cover": {"style": "motif", "bg": "#07110B", "ink": "#FFFFFF", "second": "#86EFAC", "accent": "#4ADE80",
+                  "art": "assets/covers/patterns/linux-cover-background.png",
+                  "motif": terminal_motif, "size": "76pt", "author_side": "right"},
+        # Its own look: near-black "terminal" with a green prompt. See 03-linux/planning/slide-design.md.
+        "theme": theme(
+            primary="#15803D", surface="#F4F8F5", border="#D4E6DA", text="#122017", muted="#4E6357",
+            dark=("#07110B", "#0F1F16", "#1E4331", "#EEF6F0", "#A7C5B5", "#4ADE80"),
+            code={"background": "#0A1711", "border": "#1E4331", "highlight-line": "#12241A", "text": "#E8F3EC",
+                  "comment": "#6E8C7C", "keyword": "#6EE7A8", "string": "#F2C98A", "number": "#9FE0C8",
+                  "type": "#86EFAC", "function": "#F6A96B", "punctuation": "#C7D8CE", "output": "#BFE8CF"},
+            note_tint="#EBF5EF", note_text="#14532D"),
+        "fonts": ("Work Sans", "Fira Code"),
+        "font_faces": faces(("Work Sans", "work-sans"), ("Fira Code", "fira-code")),
+        "slide_css": """
+section.dark h1::before { content: "$ "; color: #4ADE80; font-family: 'Fira Code', monospace; }
+section.recap { background: #E8F6EE; border-top: 10px solid #4ADE80; }
+pre.output { border-left-color: #4ADE80; }
+.footer span:first-child::before { content: "$"; font-family: 'Fira Code', monospace; font-weight: 700; color: #15803D; margin-right: 10px; }
+section.dark .footer span:first-child::before { color: #4ADE80; }
+""",
+        "book_css": """
+pre.output { border-left-color: #4ADE80; }
+@page { @top-left { border-bottom-color: #15803D; } @top-right { border-bottom-color: #15803D; } }
+""",
+        "text": texts("Linux for Security", "Linux សម្រាប់សុវត្ថិភាព",
+                      ["Master the Linux command line from the first login", "Users, permissions, processes, logs, and SSH",
+                       "Harden a real server, the base for every security tool"],
+                      ["ស្ទាត់ជំនាញ command line របស់ Linux ពីការ login ដំបូង", "Users, permissions, processes, logs និង SSH",
+                       "Harden server ពិតប្រាកដ ជាមូលដ្ឋានសម្រាប់ security tool"],
+                      badge_en="A Practical Guide", second=""),
+    },
     "java": {
         "folder": "23-java", "code": "java", "name": "Java", "slug": "java-programming",
         "logo_dark": "assets/logos/java/java-logo-dark-bg.svg", "logo_light": "assets/logos/java/java-logo-light-bg.svg",
@@ -1381,6 +1437,16 @@ ANGKOR = (14, 12, 1992)
 
 # course: (photo, credit, caption, position)
 PHOTO_COVERS = {
+    # --- cyber-security courses (Angkor temples, toned to each course's color) ---
+    "security-fundamentals": ("angkor-wat-sunrise.jpg",
+                              "Cover photo: “Siem Reap Reflections (CAMBODIA-REFLECTION-ANGKOR WAT) III” by Chi King, CC BY 2.0, via Flickr. Cropped and toned.",
+                              heritage("Angkor Wat, Angkor", "ប្រាសាទអង្គរវត្ត អង្គរ", ANGKOR), "50% 28%"),
+    "computer-fundamentals": ("bayon-commons.jpg",
+                              "Cover photo: “Bayon” by lumoplank, CC0, via Wikimedia Commons. Cropped and toned.",
+                              heritage("Bayon, Angkor Thom", "ប្រាសាទបាយ័ន អង្គរធំ", ANGKOR), "50% 40%"),
+    "linux": ("ta-prohm-commons.jpg",
+              "Cover photo: “Ta Prohm, Angkor 22” by LBM1948, CC BY-SA 4.0, via Wikimedia Commons. Cropped and toned.",
+              heritage("Ta Prohm, Angkor", "ប្រាសាទតាព្រហ្ម អង្គរ", ANGKOR), "50% 40%"),
     "flutter": ("royal-ballet-mcfa.jpg", f"Cover photo: the Royal Ballet of Cambodia, {MCFA}",
                 heritage("Royal Ballet of Cambodia", "របាំព្រះរាជទ្រព្យ", (7, 11, 2003), True), "50% 20%"),
     "ios": ("chapei-dang-veng-mcfa.jpg", f"Cover photo: Chapei Dang Veng, {MCFA}",
